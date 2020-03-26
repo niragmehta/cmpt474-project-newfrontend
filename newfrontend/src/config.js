@@ -1,4 +1,4 @@
-const config = {
+export const config = {
   cognito: {
     userPoolId: "us-east-1_WvAf7TrH2", // e.g. us-east-2_uXboG5pAb
     userPoolClientId: "6i3irkjn90i5j6gqf19md40dnr", // e.g. 25ddkmj4v6hfsfvruhpfi7n4hv
@@ -9,4 +9,4 @@ const config = {
   }
 };
 
-export default config;
+//export default config;
