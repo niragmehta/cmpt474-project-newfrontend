@@ -16,5 +16,4 @@ deploydjango/*
 # New stuff I added - Jordan
 # Not sure if these are necessary
 .idea/
-newfrontend/package.json
 newfrontend/package-lock.json
