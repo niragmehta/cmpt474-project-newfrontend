@@ -14,12 +14,6 @@ export class Login extends React.Component {
       password: ''
     };
 
-    //See mozilla docs on why you have to use bind.
-    // Think if we used lambdas we may not have to do this. Oh well not really
-    // That important
-    this.onChangeUser = this.onChangeUser.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   //Login
@@ -29,15 +23,7 @@ export class Login extends React.Component {
   };
 
 
-  //Updates the user.
-  onChangeUser(event){
-    this.setState({ username: event.target.value });
-  }
-
-  //Updates the password
-  onChangePassword(event){
-    this.setState({password: event.target.value})
-  }
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     return (
@@ -53,7 +39,7 @@ export class Login extends React.Component {
                 className="form-control"
                 name="username"
                 value={this.state.username}
-                onChange={this.onChangeUser}
+                onChange={this.onChange}
               />
             </div>
 
@@ -64,7 +50,7 @@ export class Login extends React.Component {
                 className="form-control"
                 name="password"
                 value={this.state.password}
-                onChange={this.onChangePassword}
+                onChange={this.onChange}
               />
             </div>
 
