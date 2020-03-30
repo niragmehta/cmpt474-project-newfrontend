@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
+import {Link} from 'react-router-dom'
+
 
 export class Register extends React.Component {
     constructor(props){
@@ -120,9 +122,9 @@ render() {
                         </button>
                     </div>
 
-                    {/*<p>*/}
-                    {/*    Already have an account? <Link to="/login">Login</Link>*/}
-                    {/*</p>*/}
+                    <p>
+                        Already have an account? <Link to="/login">Login</Link>
+                    </p>
 
                     </form>
                 </div>

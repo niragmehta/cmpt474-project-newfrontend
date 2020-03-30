@@ -1,5 +1,4 @@
 import React from "react";
-import {Redirect, BrowserRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 // See https://reactjs.org/docs/forms.html#controlled-components on how I dealt with forms
@@ -61,7 +60,8 @@ export class Login extends React.Component {
             </div>
             <p>Don't have an account?</p>
 
-              {/*<Link to="/register">Register</Link>*/}
+            <Link to="/register"> Register </Link>
+
           </form>
 
         </div>
@@ -69,4 +69,7 @@ export class Login extends React.Component {
     );
 
   }
+
 }
+
+export default Login; ///From some tutorial....
