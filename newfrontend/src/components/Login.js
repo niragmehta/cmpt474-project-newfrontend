@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-//import { Link, Redirect } from "react-router-dom";
-
+import React from "react";
+import {Redirect, BrowserRouter } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 // See https://reactjs.org/docs/forms.html#controlled-components on how I dealt with forms
 
@@ -12,7 +12,11 @@ export class Login extends React.Component {
     this.state = {
       username: '',
       password: ''
-    }
+    };
+
+    //See mozilla docs on why you have to use bind.
+    // Think if we used lambdas we may not have to do this. Oh well not really
+    // That important
     this.onChangeUser = this.onChangeUser.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,6 +27,7 @@ export class Login extends React.Component {
     e.preventDefault();
     //this.props.login(this.state.username, this.state.password); //We don't have a login page yet...
   };
+
 
   //Updates the user.
   onChangeUser(event){
@@ -69,6 +74,8 @@ export class Login extends React.Component {
               </button>
             </div>
             <p>Don't have an account?</p>
+
+              {/*<Link to="/register">Register</Link>*/}
           </form>
 
         </div>
