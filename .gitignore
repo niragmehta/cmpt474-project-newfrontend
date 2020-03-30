@@ -1,0 +1,20 @@
+# Git ignore file that was imported from the old project
+node_modules
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+local_settings.py
+media
+*.py[cod]
+*$py.class
+*.so
+deploydjango/*
+.vscode/*
+
+# New stuff I added - Jordan
+# Not sure if these are necessary
+.idea/
+newfrontend/package.json
+newfrontend/package-lock.json
