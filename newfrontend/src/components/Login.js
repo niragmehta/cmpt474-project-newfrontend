@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-//import { Link, Redirect } from "react-router-dom";
-
+import React from "react";
+import { Link } from 'react-router-dom';
 
 // See https://reactjs.org/docs/forms.html#controlled-components on how I dealt with forms
 
@@ -12,10 +11,8 @@ export class Login extends React.Component {
     this.state = {
       username: '',
       password: ''
-    }
-    this.onChangeUser = this.onChangeUser.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    };
+
   }
 
   //Login
@@ -24,15 +21,8 @@ export class Login extends React.Component {
     //this.props.login(this.state.username, this.state.password); //We don't have a login page yet...
   };
 
-  //Updates the user.
-  onChangeUser(event){
-    this.setState({ username: event.target.value });
-  }
 
-  //Updates the password
-  onChangePassword(event){
-    this.setState({password: event.target.value})
-  }
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     return (
@@ -48,7 +38,7 @@ export class Login extends React.Component {
                 className="form-control"
                 name="username"
                 value={this.state.username}
-                onChange={this.onChangeUser}
+                onChange={this.onChange}
               />
             </div>
 
@@ -59,7 +49,7 @@ export class Login extends React.Component {
                 className="form-control"
                 name="password"
                 value={this.state.password}
-                onChange={this.onChangePassword}
+                onChange={this.onChange}
               />
             </div>
 
@@ -69,6 +59,9 @@ export class Login extends React.Component {
               </button>
             </div>
             <p>Don't have an account?</p>
+
+            <Link to="/register"> Register </Link>
+
           </form>
 
         </div>
@@ -76,4 +69,7 @@ export class Login extends React.Component {
     );
 
   }
+
 }
+
+export default Login; ///From some tutorial....
