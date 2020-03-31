@@ -29,7 +29,7 @@ function App() {
         <div className="App">
             {/*Redirects the default page to go to login component*/}
             {/*Left for testing*/}
-            <Redirect exact from="/" to={"login"} />   Disabled for testing
+            <Redirect exact from="/" to={"login"} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/about" component={About} />
