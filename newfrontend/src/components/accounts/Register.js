@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom'
-
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 export class Register extends React.Component {
     constructor(props){
@@ -104,17 +104,18 @@ render() {
                         />
                     </div>
 
-                    {/*<div className="form-group">*/}
-                    {/*    <label>Country</label><br></br>*/}
-                    {/*    <CountryDropdown*/}
-                    {/*        value={country}*/}
-                    {/*        onChange={(val) => this.selectCountry(val)} />*/}
-                    {/*    <br></br><label>Region</label><br></br>*/}
-                    {/*    <RegionDropdown*/}
-                    {/*        country={country}*/}
-                    {/*        value={region}*/}
-                    {/*        onChange={(val) => this.selectRegion(val)} />*/}
-                    {/*</div>*/}
+                    Drop down here....
+                    <div className="form-group">
+                        <label>Country</label><br></br>
+                        <CountryDropdown
+                            value={this.state.country}
+                            onChange={(val) => this.selectCountry(val)} />
+                        <br></br><label>Region</label><br></br>
+                        <RegionDropdown
+                            country={this.state.country}
+                            value={this.state.region}
+                            onChange={(val) => this.selectRegion(val)} />
+                    </div>
 
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">
