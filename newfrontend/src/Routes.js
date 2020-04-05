@@ -6,8 +6,7 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 //import Header from "./components/Header";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Authentication from "./components/Auth/index";
 
 import useCheckAuth from "./utils/useCheckAuth";
 
@@ -19,9 +18,7 @@ const Routes = (props) => {
     <Router>
       {isAuth}
       <Switch>
-        <Route path="/" component={Login} />
-        <Route path="/register" component={Register} />
-        <Redirect to="/" />
+        <Authentication />
       </Switch>
     </Router>
   );
