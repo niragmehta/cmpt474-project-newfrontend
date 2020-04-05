@@ -1,28 +1,25 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // See https://reactjs.org/docs/forms.html#controlled-components on how I dealt with forms
 
 export class Login extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     //Member variables
     this.state = {
-      username: '',
-      password: ''
+      username: "",
+      password: "",
     };
-
   }
 
   //Login
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     //this.props.login(this.state.username, this.state.password); //We don't have a login page yet...
   };
 
-
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     return (
@@ -30,7 +27,6 @@ export class Login extends React.Component {
         <div className="card card-body mt-5">
           <h2 className="text-center">Login</h2>
           <form onSubmit={this.onSubmit}>
-
             <div className="form-group">
               <label>Username</label>
               <input
@@ -61,15 +57,11 @@ export class Login extends React.Component {
             <p>Don't have an account?</p>
 
             <Link to="/register"> Register </Link>
-
           </form>
-
         </div>
       </div>
     );
-
   }
-
 }
 
 export default Login; ///From some tutorial....
