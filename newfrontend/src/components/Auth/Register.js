@@ -1,138 +1,177 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { actions } from "../../app.module";
 
-export class Register extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      email: "",
-      country: "",
-      region: "",
-      password: "",
-      password2: "",
-    };
-  }
+const useStyles = makeStyles({
+  header: {
+    marginBottom: "2rem",
+  },
+  action: {
+    marginTop: 48,
+  },
+  divider: {
+    margin: "24px 0",
+  },
+});
 
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+const OutlinedField = (props) => <TextField variant="outlined" {...props} />;
 
-  selectCountry(val) {
-    this.setState({ country: val });
-  }
+const Register = (props) => {
+  const classes = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    role: "",
+    isSeeking: "",
+  });
 
-  selectRegion(val) {
-    this.setState({ region: val });
-  }
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    const updatedUser = { ...user };
+    updatedUser[name] = value;
+    setUser(updatedUser);
+  };
 
-  // Submitting a user
-  onSubmit = (e) => {
-    e.preventDefault();
-    const {
-      username,
-      email,
-      country,
-      region,
-      password,
-      password2,
-    } = this.state;
+  const handleOnChangeRole = (role) => {
+    const updatedUser = { ...user };
+    updatedUser.role = role;
+    setUser(updatedUser);
+  };
 
-    if (password !== password2) {
-      //this.props.createMessage({ passwordNotMatch: "Password do not match" }); Invalid
-    } else {
-      const newUser = {
-        username,
-        password,
-        email,
-        country,
-        region,
-      };
-      //this.props.register(newUser); Broken as of now.....
-      //Debug statements, seems to work fine!
-      // console.log(username);
-      // console.log(password);
-      // console.log(email);
-      // console.log(country);
-      // console.log(region);
+  const handleOnChangeSeeking = (isSeeking) => {
+    const updatedUser = { ...user };
+    updatedUser.isSeeking = isSeeking;
+    setUser(updatedUser);
+  };
+
+  const onSignUp = async () => {
+    const isSuccess = await dispatch(actions.signUp(user));
+    if (isSuccess) {
+      history.push("/verify");
     }
   };
 
-  //An import of the old code with some changes.
-  render() {
-    // if (this.props.isAuthenticated) {
-    //     return <Redirect to="/" />;
-    // }
-    return (
-      <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
-          <h2 className="text-center">Register</h2>
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label>Username</label>
-              <input
-                type="text"
-                className="form-control"
-                name="username"
-                onChange={this.onChange}
-                value={this.state.username}
-              />
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                className="form-control"
-                name="email"
-                onChange={this.onChange}
-                value={this.state.email}
-              />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                onChange={this.onChange}
-                value={this.state.password}
-              />
-            </div>
-            <div className="form-group">
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                className="form-control"
-                name="password2"
-                onChange={this.onChange}
-                value={this.state.password2}
-              />
-            </div>
+  const validateInput = () => {
+    const passwordRegex =
+      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+    const phoneRegex = "^[0-9]+$";
 
-            {/*<div className="form-group">*/}
-            {/*    <label>Country</label><br></br>*/}
-            {/*    <CountryDropdown*/}
-            {/*        value={country}*/}
-            {/*        onChange={(val) => this.selectCountry(val)} />*/}
-            {/*    <br></br><label>Region</label><br></br>*/}
-            {/*    <RegionDropdown*/}
-            {/*        country={country}*/}
-            {/*        value={region}*/}
-            {/*        onChange={(val) => this.selectRegion(val)} />*/}
-            {/*</div>*/}
+    let pwCheck = new RegExp(passwordRegex);
+    let phCheck = new RegExp(phoneRegex);
 
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary">
-                Register
-              </button>
-            </div>
+    if (!pwCheck.test(user.password)) {
+      alert("Password must have at least eight characters");
+      return;
+    }
 
-            <p>
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
-          </form>
-        </div>
+    if (!phCheck.test(user.phone)) {
+      alert("Phone number must be numbers only");
+      return;
+    }
+
+    onSignUp();
+  };
+
+  return (
+    <Grid container direction="column">
+      <div className={classes.header}>
+        <Typography variant="h5">
+          <b>Signup</b>
+        </Typography>
       </div>
-    );
-  }
-}
+      <Grid item>
+        <Grid container spacing={2}>
+          <Grid item>
+            <OutlinedField
+              label="Username"
+              name="username"
+              value={user.username}
+              onChange={handleOnChange}
+            />
+          </Grid>
+          <Grid item>
+            <OutlinedField
+              label="Password"
+              name="password"
+              value={user.password}
+              onChange={handleOnChange}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Divider className={classes.divider} />
+      <Grid item>
+        <Grid container spacing={2}>
+          <Grid item>
+            <OutlinedField
+              label="First Name"
+              name="firstName"
+              value={user.firstName}
+              onChange={handleOnChange}
+            />
+          </Grid>
+          <Grid item>
+            <OutlinedField
+              label="Last Name"
+              name="lastName"
+              value={user.lastName}
+              onChange={handleOnChange}
+            />
+          </Grid>
+        </Grid>
+        <br />
+        <Grid container>
+          <Grid item xs={8}>
+            <OutlinedField
+              label="Email"
+              name="email"
+              value={user.email}
+              onChange={handleOnChange}
+              fullWidth
+            />
+          </Grid>
+        </Grid>
+        <br />
+        <OutlinedField
+          label="Phone"
+          name="phone"
+          value={user.phone}
+          onChange={handleOnChange}
+        />
+      </Grid>
+      <br />
+
+      <Divider className={classes.divider} />
+      <Grid container className={classes.action} justify="flex-end" spacing={2}>
+        <Grid item>
+          <Link to="/signin">
+            <Button>Back</Button>
+          </Link>
+        </Grid>
+        <Grid item>
+          <Button onClick={validateInput} variant="contained" disableElevation>
+            Register
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+};
+
+Register.propTypes = {};
+Register.defaultProps = {};
 
 export default Register;

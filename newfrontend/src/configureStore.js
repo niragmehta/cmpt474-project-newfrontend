@@ -3,7 +3,7 @@ import thunkMiddleware from "redux-thunk";
 import rootReducer from "./reducers";
 
 // middleware
-const loggerMiddleware = store => next => action => {
+const loggerMiddleware = (store) => (next) => (action) => {
   console.group(action.type);
   console.info("dispatching", action);
   let result = next(action);
@@ -12,8 +12,8 @@ const loggerMiddleware = store => next => action => {
   return result;
 };
 
-const round = number => Math.round(number * 100) / 100;
-const monitorReducersEnhancer = createStore => (
+const round = (number) => Math.round(number * 100) / 100;
+const monitorReducersEnhancer = (createStore) => (
   reducer,
   initialState,
   enhancer
