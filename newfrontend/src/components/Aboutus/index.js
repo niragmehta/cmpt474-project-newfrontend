@@ -9,4 +9,8 @@ const Aboutus = (props) => {
     </div>
   );
 };
+
+Aboutus.propTypes = {};
+Aboutus.defaultProps = {};
+
 export default Aboutus;

@@ -155,13 +155,16 @@ const authenticate = () => async (dispatch) => {
 
   try {
     const session = await Auth.currentSession();
+    console.log("Hey");
     const user = await Auth.currentAuthenticatedUser();
+    console.log("Bye");
 
     if (!session.isValid()) throw new Error("Session expired.");
 
     dispatch(authenticateSuccess(session.getIdToken().getJwtToken()));
     dispatch(getProfileSuccess(user.attributes));
   } catch (err) {
+    console.log("Hellllllllllloooooooooooo " + err);
     dispatch(authenticateError());
   }
 };

@@ -11,7 +11,7 @@ import "./App.css";
 Amplify.configure({
   Auth: {
     mandatorySignId: true,
-    region: config.cognito.REGION,
+    region: config.cognito.region,
     userPoolId: config.cognito.userPoolId,
     userPoolWebClientId: config.cognito.userPoolClientId,
   },
