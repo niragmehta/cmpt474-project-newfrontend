@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actions } from "../../app.module";
+import Button from "@material-ui/core/Button";
 
 // See https://reactjs.org/docs/forms.html#controlled-components on how I dealt with forms
 
@@ -12,6 +13,7 @@ const Login = (props) => {
   const [err, setErr] = useState(null);
 
   const onLogin = async () => {
+    console.log("pre login request");
     if (!username) {
       setErr("Username cannot be left blank.");
       return;
@@ -62,11 +64,14 @@ const Login = (props) => {
               }}
             />
           </div>
-
           <div className="form-group">
-            <button type="submit" className="btn btn-primary" onClick={onLogin}>
+            <Button
+              variant="contained"
+              className="btn btn-primary"
+              onClick={onLogin}
+            >
               Login
-            </button>
+            </Button>
           </div>
           <p>Don't have an account?</p>
           <Link to="/register"> Register </Link>

@@ -97,7 +97,9 @@ const signIn = (username, password) => async (dispatch) => {
   dispatch(signInRequest());
 
   try {
+    console.log("Before we attempt to sign in");
     const res = await Auth.signIn(username, password);
+    console.log("Right after we attempt to sign in");
     console.log(res);
     const {
       signInUserSession: {
@@ -155,9 +157,9 @@ const authenticate = () => async (dispatch) => {
 
   try {
     const session = await Auth.currentSession();
-    console.log("Hey");
+    console.log("authenticate user before it fails");
     const user = await Auth.currentAuthenticatedUser();
-    console.log("Bye");
+    console.log("should not reach this");
 
     if (!session.isValid()) throw new Error("Session expired.");
 
