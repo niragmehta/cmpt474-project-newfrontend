@@ -125,7 +125,6 @@ const signUp = (data) => async (dispatch) => {
       lastName: family_name,
       firstName: name,
       phone: phone_number,
-      isSeeking: is_seeking,
     } = data;
 
     const res = await Auth.signUp({

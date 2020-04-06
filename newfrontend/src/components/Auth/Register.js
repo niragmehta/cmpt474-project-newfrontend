@@ -34,26 +34,12 @@ const Register = (props) => {
     lastName: "",
     email: "",
     phone: "",
-    role: "",
-    isSeeking: "",
   });
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     const updatedUser = { ...user };
     updatedUser[name] = value;
-    setUser(updatedUser);
-  };
-
-  const handleOnChangeRole = (role) => {
-    const updatedUser = { ...user };
-    updatedUser.role = role;
-    setUser(updatedUser);
-  };
-
-  const handleOnChangeSeeking = (isSeeking) => {
-    const updatedUser = { ...user };
-    updatedUser.isSeeking = isSeeking;
     setUser(updatedUser);
   };
 
