@@ -135,7 +135,6 @@ const signUp = (data) => async (dispatch) => {
         family_name: family_name,
         name: name,
         phone_number: `+1${phone_number}`,
-        "custom:is_seeking": is_seeking ? "true" : "false",
       },
     });
 

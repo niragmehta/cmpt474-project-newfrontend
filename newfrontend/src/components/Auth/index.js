@@ -10,7 +10,7 @@ const Authentication = (props) => {
   const { token } = useSelector(({ app }) => app);
 
   // TODO: handle proper callback, not fixed url
-  if (token) return <Redirect to="/services" />;
+  if (token) return <Redirect to="/aboutus" />;
 
   return (
     <Switch>
