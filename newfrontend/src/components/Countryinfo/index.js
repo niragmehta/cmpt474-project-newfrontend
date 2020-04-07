@@ -1,32 +1,30 @@
 import React from "react";
 
 import ProtectedRoute from "../ProtectedRoute/index";
-import { Switch, Route, Redirect } from "react-router-dom";
+import {Link, Switch, Route, Redirect, BrowserRouter} from "react-router-dom";
 
-import Grid from "@material-ui/core/Grid";
 import Canada from "./Canada.png";
 import US from "./us.png";
 import Netherlands from "./nl.png";
 import Sweden from "./se.png";
-
 import Canadainfo from "./Canadainfo";
 import USinfo from "./USinfo";
 import Netherlandsinfo from "./Netherlandsinfo";
 import Swedeninfo from "./Swedeninfo";
 
-
 const Countries = (props) => {
   return (
-    <Switch>
-      <ProtectedRoute path="/canada" component={Canadainfo} />
-      <ProtectedRoute path="/us" component={USinfo} />
-      <ProtectedRoute path="/netherlands" component={Netherlandsinfo} />
-      <ProtectedRoute path="/sweden" component={Swedeninfo} />
-      <ProtectedRoute path="/countryinfo" component={Countryinfo} />
-      <Redirect to="/countryinfo" />
-    </Switch>
+      <BrowserRouter>
+        <Switch>
+          <ProtectedRoute exact path ="/countryinfo" component={Countryinfo} />
+          <ProtectedRoute exact path="/canada" component={Canadainfo} />
+          <ProtectedRoute exact path="/us" component={USinfo} />
+          <ProtectedRoute exact path="/netherlands" component={Netherlandsinfo} />
+          <ProtectedRoute exact path="/sweden" component={Swedeninfo} />
+        </Switch>
+      </BrowserRouter>
   )
-}
+};
 
 Countries.propTypes = {};
 Countries.defaultProps = {};
@@ -48,11 +46,13 @@ const Countryinfo = (props) => {
           </p>
         </div>
       </div>
+
+
       <div class="card-body">
-        <a href="/canada" class="card-link">
-          Learn More
-        </a>
+          <Link to="/canada"> Learn More About Canada </Link>
       </div>
+
+
       <div class="card mb-3">
         <h3 class="card-header">Card header</h3>
         <div class="card-body">
@@ -66,9 +66,7 @@ const Countryinfo = (props) => {
         </div>
       </div>
       <div class="card-body">
-        <a href="/us" class="card-link">
-          Learn More
-        </a>
+        <Link to="/us"> Learn More </Link>
       </div>
       <div class="card mb-3">
         <h3 class="card-header">Card header</h3>
@@ -83,9 +81,7 @@ const Countryinfo = (props) => {
         </div>
       </div>
       <div class="card-body">
-        <a href="/netherlands" class="card-link">
-          Learn More
-        </a>
+        <Link to="/netherlands"> Learn More </Link>
       </div>
       <div class="card mb-3">
         <h3 class="card-header">Card header</h3>
@@ -100,9 +96,7 @@ const Countryinfo = (props) => {
         </div>
       </div>
       <div class="card-body">
-        <a href="/sweden" class="card-link">
-          Learn More
-        </a>
+        <Link to="/sweden"> Learn More </Link>
       </div>
     </div>	
   );

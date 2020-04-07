@@ -3,7 +3,7 @@ import React from "react";
 const Netherlandsinfo = (props) => {
     return (
         <div class="jumbotron">
-            <h1 class="display-3">United States</h1>
+            <h1 class="display-3"> Netherlands </h1>
             <p class="lead">
             The Netherlands (Dutch: Nederland [ˈneːdərlɑnt] (About this soundlisten); Papiamentu: 
             Hulanda; West Frisian: Nederlân), informally Holland,[12] is a country in Western Europe 

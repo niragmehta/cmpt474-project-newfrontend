@@ -3,7 +3,7 @@ import React from "react";
 const Swedeninfo = (props) => {
     return (
         <div class="jumbotron">
-            <h1 class="display-3">United States</h1>
+            <h1 class="display-3"> Sweden </h1>
             <p class="lead">
             Sweden (Swedish: Sverige [ˈsvæ̌rjɛ] (About this soundlisten)), officially the Kingdom of 
             Sweden (Swedish: Konungariket Sverige [ˈkôːnɵŋaˌriːkɛt ˈsvæ̌rjɛ] (About this soundlisten)), 

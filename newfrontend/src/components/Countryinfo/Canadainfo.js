@@ -1,9 +1,10 @@
 import React from "react";
 
+
 const Canadainfo = (props) => {
     return (
         <div class="jumbotron">
-            <h1 class="display-3">United States</h1>
+            <h1 class="display-3"> Canada </h1>
             <p class="lead">
             Canada is a country in the northern part of North America. Its ten provinces and three 
             territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, 
@@ -13,7 +14,6 @@ const Canadainfo = (props) => {
             capital is Ottawa, and its three largest metropolitan areas are Toronto, Montreal, and 
             Vancouver.
             </p>
-
         </div>
     )
 }
