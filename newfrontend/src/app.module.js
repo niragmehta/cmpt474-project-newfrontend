@@ -33,6 +33,8 @@ const initialState = {
   authenticating: false,
   user: null,
   token: null,
+  post: null,
+  blogposts: [],
 };
 
 // ------------------------------------
@@ -106,18 +108,18 @@ const saveCredentialsForVerification = (username, password) => ({
   password,
 });
 
-var blogposts = [];
+//var blogposts = [];
 
 const addBlogpost = (post) => async (dispatch) => {
   dispatch(addBlogpostRequest(post));
-
-  blogposts.push(post);
+  initialState.blogposts.push(post);
+  //blogposts.push(post);
 };
 
 const getBlogPosts = () => async (dispatch) => {
-  dispatch(getBlogpostsRequest(blogposts));
+  dispatch(getBlogpostsRequest(initialState.blogposts));
 
-  return blogposts;
+  return initialState.blogposts;
 };
 
 const signIn = (username, password) => async (dispatch) => {
@@ -249,6 +251,14 @@ const ACTION_HANDLERS = {
     ...state,
     token: null,
     user: null,
+  }),
+  [ADD_BLOGPOST]: (state, { post }) => ({
+    ...state,
+    post,
+  }),
+  [GET_BLOGPOSTS]: (state, { blogposts }) => ({
+    ...state,
+    blogposts,
   }),
   [AUTHENTICATE_REQUEST]: (state) => ({
     ...state,
