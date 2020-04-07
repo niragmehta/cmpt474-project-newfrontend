@@ -28,6 +28,8 @@ const Register = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
     username: "",
     password: "",
     password2: "",
@@ -74,6 +76,26 @@ const Register = (props) => {
       <div className="card card-body mt-5">
         <h2 className="text-center">Register</h2>
         <form onSubmit={validateInput}>
+        <div className="form-group">
+            <label>First Name</label>
+            <input
+              type="firstName"
+              className="form-control"
+              name="firstName"
+              onChange={handleOnChange}
+              value={user.firstName}
+            />
+          </div>
+          <div className="form-group">
+            <label>Last Name</label>
+            <input
+              type="lastName"
+              className="form-control"
+              name="lastName"
+              onChange={handleOnChange}
+              value={user.lastName}
+            />
+          </div>
           <div className="form-group">
             <label>Username</label>
             <input
