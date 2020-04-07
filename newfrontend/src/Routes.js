@@ -8,6 +8,7 @@ import {
 import Header from "./components/Header";
 import Authentication from "./components/Auth/index";
 import Aboutus from "./components/Aboutus";
+import Countryinfo from "./components/Countryinfo";
 import useCheckAuth from "./utils/useCheckAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -19,6 +20,7 @@ const Routes = (props) => {
       {isAuth && <Header />}
       <Switch>
         <Route exact path="/aboutus" component={Aboutus} />
+        <Route exact path="/countryinfo" component={Countryinfo} />
         <Route path="/" component={Authentication} />
         <Redirect to="/" />
       </Switch>
