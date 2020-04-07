@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 const OutlinedField = (props) => <TextField variant="outlined" {...props} />;
-
+var secondPassword = "";
 const Register = (props) => {
   const classes = useStyles();
   const history = useHistory();
@@ -42,6 +42,12 @@ const Register = (props) => {
     updatedUser[name] = value;
     setUser(updatedUser);
   };
+
+  const handlePassword2Change = (e) => {
+    const { name, value } = e.target;
+    secondPassword = value;
+  };
+
 
   const onSignUp = async () => {
     const isSuccess = await dispatch(actions.signUp(user));
@@ -67,93 +73,99 @@ const Register = (props) => {
       alert("Phone number must be numbers only");
       return;
     }
+    if (!(user.password == secondPassword)) {
+      alert("Passwords do not match " + user.password + " " + secondPassword);
+      return;
+    }
 
     onSignUp();
   };
 
   return (
-    <Grid container direction="column">
-      <div className={classes.header}>
-        <Typography variant="h5">
-          <b>Signup</b>
-        </Typography>
-      </div>
-      <Grid item>
-        <Grid container spacing={2}>
-          <Grid item>
-            <OutlinedField
-              label="Username"
-              name="username"
-              value={user.username}
-              onChange={handleOnChange}
-            />
-          </Grid>
-          <Grid item>
-            <OutlinedField
-              label="Password"
-              name="password"
-              value={user.password}
-              onChange={handleOnChange}
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-      <Divider className={classes.divider} />
-      <Grid item>
-        <Grid container spacing={2}>
-          <Grid item>
-            <OutlinedField
-              label="First Name"
+    <div className="col-md-6 m-auto">
+      <div className="card card-body mt-5">
+        <h2 className="text-center">Register</h2>
+        <form>
+          <div className="form-group">
+            <label>First name</label>
+            <input
+              type="text"
+              className="form-control"
               name="firstName"
+              onChange={handleOnChange}
               value={user.firstName}
-              onChange={handleOnChange}
             />
-          </Grid>
-          <Grid item>
-            <OutlinedField
-              label="Last Name"
+          </div>
+          <div className="form-group">
+            <label>Last Name</label>
+            <input
+              type="text"
+              className="form-control"
               name="lastName"
+              onChange={handleOnChange}
               value={user.lastName}
-              onChange={handleOnChange}
             />
-          </Grid>
-        </Grid>
-        <br />
-        <Grid container>
-          <Grid item xs={8}>
-            <OutlinedField
-              label="Email"
+          </div>
+          <div className="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              className="form-control"
+              name="username"
+              onChange={handleOnChange}
+              value={user.username}
+            />
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              className="form-control"
               name="email"
-              value={user.email}
               onChange={handleOnChange}
-              fullWidth
+              value={user.email}
             />
-          </Grid>
-        </Grid>
-        <br />
-        <OutlinedField
-          label="Phone"
-          name="phone"
-          value={user.phone}
-          onChange={handleOnChange}
-        />
-      </Grid>
-      <br />
-
-      <Divider className={classes.divider} />
-      <Grid container className={classes.action} justify="flex-end" spacing={2}>
-        <Grid item>
-          <Link to="/signin">
-            <Button>Back</Button>
-          </Link>
-        </Grid>
-        <Grid item>
-          <Button onClick={validateInput} variant="contained" disableElevation>
-            Register
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              onChange={handleOnChange}
+              value={user.password}
+            />
+          </div>
+          <div className="form-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              onChange={handlePassword2Change}
+            />
+          </div>
+          <div className="form-group">
+            <label>Phone Number</label>
+            <input
+              type="phone"
+              className="form-control"
+              name="phone"
+              onChange={handleOnChange}
+              value={user.phone}
+            />
+          </div>
+          <div className="form-group">
+            <Button className="btn btn-primary" onClick={validateInput}>
+              Register
           </Button>
-        </Grid>
-      </Grid>
-    </Grid>
+          </div>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </form>
+      </div>
+    </div>
   );
 };
 

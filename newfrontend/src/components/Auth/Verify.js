@@ -6,56 +6,31 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles({
-  root: {
-    height: "100%",
-  },
-  header: {
-    marginBottom: "2rem",
-  },
-  action: {
-    marginTop: "1rem",
-  },
-});
+
 
 /**
  * Verify code by email
  */
 const Verify = (props) => {
-  const classes = useStyles();
-  const user = useSelector(({ app }) => app.user);
 
-  if (!user?.username) return <Redirect to="/login" />;
+  // const user = useSelector(({ app }) => app.user);
+  //
+  // if (!user?.username) return <Redirect to="/login" />;
+
+
 
   return (
-    <Grid
-      container
-      direction="column"
-      justify="center"
-      className={classes.root}
-    >
-      <Grid item>
-        <div className={classes.header}>
-          <Typography variant="h5">
-            <b>Verify Email</b>
-          </Typography>
-          <Typography color="textSecondary">
-            Check your email for the verification link.
-          </Typography>
-        </div>
-        <Grid container item spacing={2}></Grid>
-      </Grid>
-      <div className={classes.action}>
-        <Grid container justify="space-between">
-          <Grid item>
-            <Link to="/login">
-              <Button variant="text">Back to Login</Button>
-            </Link>
-          </Grid>
-        </Grid>
+
+      <div className="jumbotron jumbotron-fluid">
+          <div className="container">
+              <h1>You haven't verified your account yet!</h1>
+              Check your email for any verification emails.<br></br>
+              Click <Link to="/login"> here </Link> to go back to the login page
+          </div>
       </div>
-    </Grid>
+
   );
+
 };
 
 export default Verify;
