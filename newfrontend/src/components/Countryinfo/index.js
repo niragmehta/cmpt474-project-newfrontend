@@ -35,10 +35,7 @@ const Countryinfo = (props) => {
   return (
     <div>
       <div class="card mb-3">
-        <h3 class="card-header">Card header</h3>
-        <div class="card-body">
-          <h5 class="card-title">Canada</h5>
-        </div>
+        <h3 class="card-header">Canada</h3>
         <img class="countrytile" src={Canada} alt="Card image" />
         <div class="card-body">
           <p class="card-text">
@@ -54,10 +51,7 @@ const Countryinfo = (props) => {
 
 
       <div class="card mb-3">
-        <h3 class="card-header">Card header</h3>
-        <div class="card-body">
-          <h5 class="card-title">United States</h5>
-        </div>
+        <h3 class="card-header"> United States</h3>
         <img class="countrytile" src={US} alt="Card image" />
         <div class="card-body">
           <p class="card-text">
@@ -69,10 +63,7 @@ const Countryinfo = (props) => {
         <Link to="/us"> Learn More </Link>
       </div>
       <div class="card mb-3">
-        <h3 class="card-header">Card header</h3>
-        <div class="card-body">
-          <h5 class="card-title">Netherlands</h5>
-        </div>
+        <h3 class="card-header">Netherlands</h3>
         <img class="countrytile" src={Netherlands} alt="Card image" />
         <div class="card-body">
           <p class="card-text">
@@ -84,10 +75,8 @@ const Countryinfo = (props) => {
         <Link to="/netherlands"> Learn More </Link>
       </div>
       <div class="card mb-3">
-        <h3 class="card-header">Card header</h3>
-        <div class="card-body">
-          <h5 class="card-title">Sweden</h5>
-        </div>
+        <h3 class="card-header">Sweden</h3>
+
         <img class="countrytile" src={Sweden} alt="Card image" />
         <div class="card-body">
           <p class="card-text">
