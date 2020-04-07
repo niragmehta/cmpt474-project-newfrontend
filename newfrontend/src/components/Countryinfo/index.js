@@ -22,8 +22,8 @@ const Countries = (props) => {
       <ProtectedRoute path="/us" component={USinfo} />
       <ProtectedRoute path="/netherlands" component={Netherlandsinfo} />
       <ProtectedRoute path="/sweden" component={Swedeninfo} />
-      <ProtectedRoute path="/countrylist" component={Countryinfo} />
-      <Redirect to="/countrylist" />
+      <ProtectedRoute path="/countryinfo" component={Countryinfo} />
+      <Redirect to="/countryinfo" />
     </Switch>
   )
 }

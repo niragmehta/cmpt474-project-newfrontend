@@ -21,7 +21,7 @@ const Routes = (props) => {
       {isAuth && <Header />}
       <Switch>
         <Route exact path="/aboutus" component={Aboutus} />
-        <ProtectedRoute exact path="/countryinfo" component={Countryinfo} />
+        <Route exact path="/countryinfo" component={Countryinfo} />
         <Route exact path="/blogpost" component={BlogPost} />
         <Route path="/" component={Authentication} />
         <Redirect to="/" />
