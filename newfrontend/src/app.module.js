@@ -21,6 +21,9 @@ const GET_PROFILE_REQUEST = "GET_PROFILE_REQUEST";
 const GET_PROFILE_SUCCESS = "GET_PROFILE_SUCCESS";
 const GET_PROFILE_ERROR = "GET_PROFILE_ERROR";
 
+const ADD_BLOGPOST = "ADD_BLOGPOST";
+const GET_BLOGPOSTS = "GET_BLOGPOSTS";
+
 const SAVE_CREDENTIALS_FOR_VERIFICATION = "SAVE_CREDENTIALS_FOR_VERIFICATION";
 
 const initialState = {
@@ -38,6 +41,16 @@ const initialState = {
 
 const signInRequest = () => ({
   type: SIGNIN_REQUEST,
+});
+
+const addBlogpostRequest = (post) => ({
+  type: ADD_BLOGPOST,
+  post,
+});
+
+const getBlogpostsRequest = (blogposts) => ({
+  type: GET_BLOGPOSTS,
+  blogposts,
 });
 
 const signInSuccess = (token) => ({
@@ -92,6 +105,20 @@ const saveCredentialsForVerification = (username, password) => ({
   username,
   password,
 });
+
+var blogposts = [];
+
+const addBlogpost = (post) => async (dispatch) => {
+  dispatch(addBlogpostRequest(post));
+
+  blogposts.push(post);
+};
+
+const getBlogPosts = () => async (dispatch) => {
+  dispatch(getBlogpostsRequest(blogposts));
+
+  return blogposts;
+};
 
 const signIn = (username, password) => async (dispatch) => {
   dispatch(signInRequest());
@@ -200,6 +227,8 @@ export const actions = {
   signIn,
   signUp,
   signOut,
+  addBlogpost,
+  getBlogPosts,
   authenticate,
   getProfile,
   saveCredentialsForVerification,
