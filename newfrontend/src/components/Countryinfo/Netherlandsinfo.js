@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Netherlandsinfo = (props) => {
     return (
@@ -19,6 +20,7 @@ const Netherlandsinfo = (props) => {
             non-territorial languages.[1]
             </p>
 
+            <Link to="/countryinfo" > Back </Link>
         </div>
     )
 }

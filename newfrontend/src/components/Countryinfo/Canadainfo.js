@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 
 const Canadainfo = (props) => {
@@ -14,6 +15,8 @@ const Canadainfo = (props) => {
             capital is Ottawa, and its three largest metropolitan areas are Toronto, Montreal, and 
             Vancouver.
             </p>
+
+            <Link to="/countryinfo" > Back </Link>
         </div>
     )
 }

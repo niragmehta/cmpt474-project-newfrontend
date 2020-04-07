@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Swedeninfo = (props) => {
     return (
@@ -19,6 +20,7 @@ const Swedeninfo = (props) => {
             of the country.
             </p>
 
+        <Link to="/countryinfo" > Back </Link>
         </div>
     )
 }

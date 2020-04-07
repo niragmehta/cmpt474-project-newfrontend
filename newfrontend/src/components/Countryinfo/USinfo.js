@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const USinfo = (props) => {
     return (
@@ -13,7 +14,7 @@ const USinfo = (props) => {
             328 million, the U.S. is the third most populous country in the world. The capital is Washington, 
             D.C., and the most populous city is New York City.
             </p>
-
+            <Link to="/countryinfo" > Back </Link>
         </div>
     )
 }
