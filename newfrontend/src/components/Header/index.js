@@ -34,9 +34,6 @@ export default function ButtonAppBar(props) {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <a className="nav-link" href="#">
-            Blog<span className="sr-only">(current)</span>
-          </a>
           <Link to="/aboutus" className="nav-link">
             About Us
           </Link>
@@ -46,8 +43,8 @@ export default function ButtonAppBar(props) {
           <Link to="/login" className="nav-link" onClick={handleOnSignOut}>
             Sign Out
           </Link>
-          <Link to="/blogpost" className="nav-link" onClick={handleOnSignOut}>
-            Comments
+          <Link to="/blogpost" className="nav-link">
+            Blog Post
           </Link>
         </div>
       </div>
