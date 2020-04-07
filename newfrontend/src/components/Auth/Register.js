@@ -22,20 +22,18 @@ const useStyles = makeStyles({
 });
 
 const OutlinedField = (props) => <TextField variant="outlined" {...props} />;
-
+var secondPassword = "";
 const Register = (props) => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
     username: "",
     password: "",
-    password2: "",
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
   });
 
   const handleOnChange = (e) => {
@@ -44,6 +42,12 @@ const Register = (props) => {
     updatedUser[name] = value;
     setUser(updatedUser);
   };
+
+  const handlePassword2Change = (e) => {
+    const { name, value } = e.target;
+    secondPassword = value;
+  };
+
 
   const onSignUp = async () => {
     const isSuccess = await dispatch(actions.signUp(user));
@@ -55,16 +59,22 @@ const Register = (props) => {
   const validateInput = () => {
     const passwordRegex =
       "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+    const phoneRegex = "^[0-9]+$";
 
     let pwCheck = new RegExp(passwordRegex);
+    let phCheck = new RegExp(phoneRegex);
 
     if (!pwCheck.test(user.password)) {
       alert("Password must have at least eight characters");
       return;
     }
 
-    if (user.password != user.password2) {
-      alert("Passwords must match");
+    if (!phCheck.test(user.phone)) {
+      alert("Phone number must be numbers only");
+      return;
+    }
+    if (!(user.password == secondPassword)) {
+      alert("Passwords do not match " + user.password + " " + secondPassword);
       return;
     }
 
@@ -75,11 +85,11 @@ const Register = (props) => {
     <div className="col-md-6 m-auto">
       <div className="card card-body mt-5">
         <h2 className="text-center">Register</h2>
-        <form onSubmit={validateInput}>
-        <div className="form-group">
-            <label>First Name</label>
+        <form>
+          <div className="form-group">
+            <label>First name</label>
             <input
-              type="firstName"
+              type="text"
               className="form-control"
               name="firstName"
               onChange={handleOnChange}
@@ -89,7 +99,7 @@ const Register = (props) => {
           <div className="form-group">
             <label>Last Name</label>
             <input
-              type="lastName"
+              type="text"
               className="form-control"
               name="lastName"
               onChange={handleOnChange}
@@ -131,15 +141,24 @@ const Register = (props) => {
             <input
               type="password"
               className="form-control"
-              name="password2"
-              onChange={handleOnChange}
-              value={user.password2}
+              name="password"
+              onChange={handlePassword2Change}
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <label>Phone Number</label>
+            <input
+              type="phone"
+              className="form-control"
+              name="phone"
+              onChange={handleOnChange}
+              value={user.phone}
+            />
+          </div>
+          <div className="form-group">
+            <Button className="btn btn-primary" onClick={validateInput}>
               Register
-              </button>
+          </Button>
           </div>
           <p>
             Already have an account? <Link to="/login">Login</Link>
